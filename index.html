@@ -1,0 +1,579 @@
+
+<!-- saved from url=(0043)https://quiet-cove-6055.herokuapp.com/index -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=0">
+
+<style type="text/css"></style>
+<link href="./css" rel="stylesheet" type="text/css">
+<script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script></head><body marginwidth="0" marginheight="0" data-new-gr-c-s-check-loaded="14.1008.0" data-gr-ext-installed="">
+
+<div id="main-container">
+
+<div id="flasher"></div>
+
+<div id="control">
+	<div class="cont">
+		<p class="cont-text" id="start">START</p>
+	</div>
+	<div class="cont">
+		<p class="cont-text" id="pause">PAUSE</p>
+	</div>
+	<div class="cont">
+		<p class="cont-text" id="stop">STOP</p>
+	</div>
+	<div class="cont">
+		<p class="cont-text" id="warn">WARN</p>
+	</div>
+	<div class="cont" id="ff">
+		<p class="cont-text" id="flash">FLASH</p>
+	</div>
+	
+</div>
+
+<div id="control-mm"></div>
+
+
+
+<p id="timer">00 : 00 : 00</p>
+
+
+<p id="time-hour" class="t">00 :</p>
+<p id="time-minute" class="t">00</p>
+<p id="time-seconds" class="t">: 00</p>
+ 
+
+<p id="my-time">8:22 PM</p>
+
+
+<div id="options" style="width: 80px;">
+	<div id="options-op"></div>
+		<p id="plus">+</p>
+		
+			<div class="opt">
+				<p class="add" id="hr_add"> + &nbsp; </p>
+					<p class="name">5 MINUTES</p>
+						<p class="sub" id="hr_sub"> &nbsp; - </p>
+			</div>
+			
+			<div class="opt">
+				<p class="add" id="min_add"> + &nbsp; </p>
+					<p class="name">1 MINUTE</p>
+						<p class="sub" id="min_sub"> &nbsp; - </p>
+			</div>
+			
+			<div class="opt">
+				<p class="add" id="sec_add"> + &nbsp; </p>
+					<p class="name">a SECOND</p>
+						<p class="sub" id="sec_sub"> &nbsp; - </p>
+			</div>
+</div>
+
+</div>
+<style type="text/css">
+@font-face {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 900;
+	
+}
+html {
+	height:100%;
+	width:100%;
+	background-color:#000000;
+}
+body {
+	background-color:#000000;
+	margin:0;
+
+	overflow:hidden;
+}
+#main-container {
+	position:absolute;
+	min-height:100%;
+	height:auto;
+	width:100%;
+	background-color:#000000;
+	overflow:hidden;
+}
+.main-container:-webkit-full-screen {
+    width: 100%;
+    height: 100%;
+  }
+  .main-container:-moz-full-screen {
+    width: 100%;
+    height: 100%;
+  }
+#control {
+	position:fixed;
+	height:50px;
+	top:0;
+	width:100%;
+	text-align:center;	
+	display:block;
+	!background-color:white;
+}
+#logo {
+	position:absolute;
+	top:5px;
+	left:5px;
+	height:70px;
+}
+#control-mm {
+	position:fixed;
+	display:none;
+	height:50px;
+	top:0;
+	width:100%;
+	text-align:center;	
+	background-color:#000000;
+}
+#flasher {
+	position:absolute;
+	height:100%;
+	width:100%;
+	background-color:red;
+	display:none;
+}
+.cont {
+	position:relative;
+	!background-color:red;
+	margin:auto;
+	height:100%;
+	display:inline-block;
+	width:200px;
+	border-right:1px solid #232323;
+}
+.t {
+	position:relative;
+	width:33%;
+	display:inline-block;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 900;
+	color:#FFFFFF;
+	font-size:200px;
+	margin-top:10%;
+	!top:30%;
+	text-align:center;
+}
+#time-hour {
+	text-align:right;
+}
+#time-seconds {
+	text-align:left;
+}
+
+#my-time {
+	position:absolute;
+	color:#C0C0C0;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 900;
+	font-size:130px;
+	text-align:center;
+	margin-top:0;
+	width:100%;
+	top:70%;
+}
+.cont-text {
+	position:absolute;
+	width:100%;
+	margin-top:15px;
+	color:#C0C0C0;
+	font-size:24px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 900;
+	cursor:pointer;
+	cursor:hand;
+	opacity:0.4;
+}
+
+#timer {
+	position:absolute;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 900;
+	color:#FFFFFF;
+	font-size:200px;
+	width:100%;
+	text-align:center;
+	display:none;
+}
+#ff {
+	border:none;
+}
+
+#options {
+	position:fixed;
+	bottom:10px;
+	width:100%;
+	height:50px;
+	!background-color:red;
+}
+#options-op {
+	position:absolute;
+	height:100%;
+	width:100%;
+	!background-color:#232323;
+	opacity:0.4;
+}
+#plus {  
+	position:relative;
+	display:inline-block;
+	margin-left:10px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 900;
+	font-size:70px; 
+	margin-top:-20px;
+	color:#2c2c2c;
+	cursor:pointer; cursor:hand;
+}
+.opt {
+	position:relative;
+	display:inline-block;
+	margin-top:0;
+	margin-left:80px;
+	height:100%;
+	padding:0;
+	!background-color:red;
+	vertical-align:top;
+}
+.add { 
+	position:relative;
+	display:inline-block;
+	margin-top:0px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 900;
+	font-size:40px;
+	color:#5d5d5d;
+	cursor:pointer; cursor:hand;
+}
+.sub {
+	position:relative;
+	display:inline-block;
+	margin-top:0px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 900;
+	font-size:40px;
+	color:#5d5d5d;
+	cursor:pointer; cursor:hand;
+}
+.name {
+	position:relative;
+	display:inline-block;
+	margin-top:0px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 900;
+	font-size:40px;
+	color:#5d5d5d;
+	!cursor:pointer; cursor:hand;
+}
+</style> 
+
+
+
+
+
+<script>
+
+var counter = 0;
+
+var seconds = 0;
+var minutes = 0;
+var hour = 0;
+var isGoing = false;
+var toggle = false;
+var isFlash;
+
+var isStart = false;
+var isPaused = false;
+
+var hidden = false;
+
+
+// ADDING AND SUBTRACTING TIME
+	var hAdd = document.getElementById( 'hr_add' );
+	var hSub = document.getElementById( 'hr_sub' );
+	
+	var mAdd = document.getElementById( 'min_add' );
+	var mSub = document.getElementById( 'min_sub' );
+	
+	var sAdd = document.getElementById( 'sec_add' );
+	var sSub = document.getElementById( 'sec_sub' );
+	
+		hAdd.addEventListener( 'click' , function () {
+			// hour++;	
+			minutes += 5;		
+			drawTime();
+		} );
+		hSub.addEventListener( 'click' , function () {
+			if ( minutes >= 5 ) {
+				minutes -= 5;
+				drawTime();
+			}
+		} );
+		
+		mAdd.addEventListener( 'click' , function () {
+			minutes++;
+			drawTime();
+		} );
+		mSub.addEventListener( 'click' , function () {
+			if ( minutes != 0 ) {
+				minutes--;
+				drawTime();
+			}
+		} );
+		
+		sAdd.addEventListener( 'click' , function () {
+			seconds++;
+			drawTime();
+			counter = seconds;
+		} );
+		sSub.addEventListener( 'click' , function () {
+			if ( seconds != 0 ) {
+				seconds--;
+				drawTime();
+				counter = seconds;
+			}
+		} );
+		
+		
+		
+		 var hide = document.getElementById( 'plus' );
+		hide.addEventListener( 'click' , function () {
+			var tmp = hide.innerHTML;
+			
+				if ( !hidden ) {
+					hide.innerHTML = "+";
+						document.getElementById( 'options' ).style.width = "80px"; 
+							hidden = true;
+				} else {
+					hide.innerHTML = "-";
+						document.getElementById( 'options' ).style.width = "100%";
+							hidden = false;
+				}
+		} );
+	
+
+var start = document.getElementById( 'start' );
+
+
+
+	start.addEventListener( 'click' , function () {
+	
+	
+	if ( !isStart ) {
+	
+		isStart = true;
+		tmp = setInterval( function () {
+		
+			
+			
+			if ( counter == 60 ) {
+				minutes++;
+					counter = 0;
+			}
+			
+			if ( minutes == 59 ) {
+				hour++;
+					minutes = 0;
+			}
+				drawTime();
+				
+				counter++;
+			
+			seconds = counter;
+		if ( isGoing ) {		
+			startFlash();
+				isGoing = false;		
+		}
+		
+		
+		}, 1000 );
+	
+		tmp;
+		
+		
+	}
+});
+	
+	function startFlash() {
+		isFlash = setInterval(  function () {
+			if ( !toggle ) {
+				document.getElementById( 'flasher' ).style.display = "block";
+					document.getElementById( 'time-hour' ).style.color = "#000000";
+					document.getElementById( 'time-minute' ).style.color = "#000000";
+					document.getElementById( 'time-seconds' ).style.color = "#000000";
+						toggle = true;
+			} else {
+				document.getElementById( 'flasher' ).style.display = "none";
+					document.getElementById( 'time-hour' ).style.color = "#FFFFFF";
+					document.getElementById( 'time-minute' ).style.color = "#FFFFFF";
+					document.getElementById( 'time-seconds' ).style.color = "#FFFFFF";
+						toggle = false;
+			}
+		}, 200  );
+	}
+	
+var stop = document.getElementById( 'stop' );
+
+	stop.addEventListener( 'click' , function () {
+		clearInterval( tmp );
+		isStart = false;
+			minutes = 0;
+			hour = 0;
+			seconds = 0;
+			counter = 0;
+			drawTime();
+	});
+
+	
+var pause = document.getElementById( 'pause' );
+	
+	pause.addEventListener( 'click' , function () {
+		clearInterval( tmp );
+		isStart = false;
+	});
+	
+	
+	
+var warn = document.getElementById( 'warn' );
+	warn.addEventListener( 'click' , function () {
+		if ( warn.innerHTML == "WARN" ) {
+			console.log( 'warn' );
+			warn.innerHTML = "STOP WARN";
+				document.getElementById( 'time-hour' ).style.color = "red";
+				document.getElementById( 'time-minute' ).style.color = "red";
+				document.getElementById( 'time-seconds' ).style.color = "red";
+		} else {
+			console.log( "yeah" );
+			warn.innerHTML = "WARN";
+				document.getElementById( 'time-hour' ).style.color = "#FFFFFF";
+				document.getElementById( 'time-minute' ).style.color = "#FFFFFF";
+				document.getElementById( 'time-seconds' ).style.color = "#FFFFFF";
+		}
+	});
+	
+	
+var flash = document.getElementById( 'flash' );
+	flash.addEventListener( 'click' , function () {
+	
+		if ( flash.innerHTML == "FLASH" ) {
+			isGoing = true;
+				flash.innerHTML = "STOP FLASHING";
+		} else {
+			isGoing = false;
+				flash.innerHTML = "FLASH";
+					clearInterval( isFlash );
+					document.getElementById( 'time-hour' ).style.color = "#FFFFFF";
+					document.getElementById( 'time-minute' ).style.color = "#FFFFFF";
+					document.getElementById( 'time-seconds' ).style.color = "#FFFFFF";
+						document.getElementById( 'flasher' ).style.display = "none";
+		}
+	});
+	
+	
+	function drawTime() {
+	
+	
+		var timer = document.getElementById( 'timer' );
+		
+			
+			
+			var sec = seconds.toString();
+			var min = minutes.toString();
+			var hr = hour.toString();
+			
+			
+			
+			if ( sec.length == 1 ) {
+				sec = "0" + sec;
+			} 
+			if ( min.length == 1 ) {
+				min = "0" + min;
+			} 
+			if ( hr.length == 1 ) {
+				hr = "0" + hr;
+			} 
+			if ( seconds == 60 ) {
+				sec = "00";
+			}
+			console.log( sec );
+			
+			var time = hr + " : " + min + " : " + sec;
+			
+			//timer.innerHTML = time;
+			
+			document.getElementById( 'time-hour' ).innerHTML = hr + " :";
+				document.getElementById( 'time-minute' ).innerHTML = min;
+					document.getElementById( 'time-seconds' ).innerHTML = ": " + sec;
+	
+	}
+
+
+	window.onload = function () {
+	
+	
+	var ttt = getTime();
+				document.getElementById( 'my-time' ).innerHTML = ttt;
+		
+		
+				
+		setInterval( function () {
+			var tme = getTime();
+				
+				document.getElementById( 'my-time' ).innerHTML = tme;
+		}, 10000 );
+	}
+	
+	function getTime() {
+	var d = new Date();
+		var hour = d.getHours();
+			var min = d.getMinutes();
+				var ampm = "AM";
+				
+					if ( hour >= 12 ) {
+						ampm = "PM";
+					}
+					
+					if ( hour > 12 ) {
+						hour = hour - 12;
+					}
+					
+					if ( hour == 0 ) {
+						hour = 12;
+					}
+
+			var mins = min.toString();
+				if ( mins.length == 1 ) { min = "0" + min ;}
+	return hour + ":" + min + " " + ampm;
+}
+
+
+
+
+
+
+var full = document.getElementById( 'full' );
+	full.addEventListener( 'click' , function () {
+		var elem = document.getElementById( 'main-container' );
+			if (elem.requestFullscreen) {
+			  elem.requestFullscreen();
+			} else if (elem.msRequestFullscreen) {
+			  elem.msRequestFullscreen();
+			} else if (elem.mozRequestFullScreen) {
+			  elem.mozRequestFullScreen();
+			} else if (elem.webkitRequestFullscreen) {
+			  elem.webkitRequestFullscreen();
+			}
+	
+	} );
+	
+	 
+	
+	 
+	
+</script>
+
+
+
+
+
+
+
+</body></html>
