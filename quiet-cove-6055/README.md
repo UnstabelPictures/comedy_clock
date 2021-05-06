@@ -1,20 +1,11 @@
-This is a very simple stopwatch. It's occasionally helpful.
+This is a Dark themed Timer specifically created for running a show
 =========================================
 
-Use or demo here: http://stopwatch.jasonormand.com
-
-![Screenshot](http://github.com/okor/simple-stopwatch/raw/master/screenshot.png)
-
+It can be found online at
+http://clokme.in
 
 Run it locally
 =========
 
-Clone the repo
-
-      git clone git://github.com/okor/simple-stopwatch.git
-
-Start rack
-
-      cd simple-stopwatch
-      rackup
-
+this timer is free and feature filled.
+It was design for McCurdy's Comedy Theatre in Sarasota.
